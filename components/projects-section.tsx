@@ -7,49 +7,60 @@ import { cn } from "@/lib/utils"
 
 const projects = [
   {
-    title: "Evaluacion de Riesgos Hidrogeologicos",
+    title: "Gestión de Riesgos Aeropuerto José María Córdova",
     category: "Gestion de Riesgos",
-    location: "Cundinamarca, Colombia",
+    location: "Rionegro, Antioquia",
     description:
-      "Diagnostico integral de factores de riesgo hidrogeologico para el plan de ordenamiento territorial de multiples municipios.",
-    image: "/images/project-risk.jpg",
-    stats: { label: "Municipios", value: "12" },
+      "Identificación, clasificación, evaluación y calificación de los riesgos de la construcción de franjas de seguridad, obras hidráulicas, obras de mitigación y/o contención, incluyendo trámite ambiental y predial.",
+    image: "/images/projects/aeropuerto-rionegro.png",
+    clients: [
+      { name: "Aeronáutica Civil", logo: "/images/clients/aeronautica-consorcio.png" },
+    ],
+    stats: { label: "Aeropuerto", value: "JMC" },
   },
   {
-    title: "Estudio de Huella de Carbono Corporativa",
-    category: "Sostenibilidad Ambiental",
-    location: "Bogota, Colombia",
-    description:
-      "Medicion y estrategia de reduccion de huella de carbono para empresas del sector industrial bajo estandares internacionales.",
-    image: "/images/project-sustainability.jpg",
-    stats: { label: "Reduccion CO2", value: "35%" },
-  },
-  {
-    title: "Infraestructura Sostenible Municipal",
+    title: "Estudios Puentes El Paso, El Totumo y Río Sumapaz",
     category: "Ingenieria",
-    location: "Boyaca, Colombia",
+    location: "Huila y Tolima",
     description:
-      "Desarrollo de proyectos de infraestructura con criterios de sostenibilidad y mitigacion de riesgos naturales.",
-    image: "/images/project-engineering.jpg",
-    stats: { label: "Obras", value: "8" },
+      "Estudio de análisis y gestión del riesgo Puente El Paso. Estudios y diseños para los puentes El Totumo (Huila) y Puente sobre el Río Sumapaz, Puente El Paso (Tolima). Estudios técnicos Fase II avanzada.",
+    image: "/images/projects/puente-el-paso.png",
+    clients: [
+      { name: "INVIAS - JPS Ingeniería", logo: "/images/clients/invias-jps.png" },
+    ],
+    stats: { label: "Puentes", value: "3" },
   },
   {
-    title: "Programa de Capacitacion en Riesgos",
-    category: "Entrenamiento",
+    title: "Corredor Vial Santa Lucía Los Mangos",
+    category: "Ingenieria",
+    location: "Colombia",
+    description:
+      "Formulación, estructuración, estudios y diseños definitivos - Fase 3 del corredor vial y acompañamiento durante la etapa de viabilización y aprobación con los requisitos del Sistema General de Regalías.",
+    image: "/images/projects/corredor-santa-lucia.png",
+    clients: [
+      { name: "ENTerritorio - JPS Ingeniería", logo: "/images/clients/enterritorio-jps.png" },
+    ],
+    stats: { label: "Fase", value: "3" },
+  },
+  {
+    title: "Seguridad y Salud en el Trabajo - ECOPETROL",
+    category: "SST",
     location: "Nacional",
     description:
-      "Entrenamiento masivo en gestion de riesgos y emergencias para comunidades y organizaciones en todo el pais.",
-    image: "/images/project-training.jpg",
-    stats: { label: "Personas", value: "500+" },
+      "Asesoría en la gestión de SST con el contrato 3021707 de ECOPETROL para servicio de ingeniería y supervisión integral de pozos: planeación, perforación, terminación, completamiento, pruebas, reacondicionamiento, mantenimiento y abandono.",
+    image: "/images/project-engineering.jpg",
+    clients: [
+      { name: "Unión Temporal WES", logo: "/images/clients/union-temporal-wes.png" },
+    ],
+    stats: { label: "Periodo", value: "2020-21" },
   },
 ]
 
 const categories = [
   "Todos",
   "Gestion de Riesgos",
-  "Sostenibilidad Ambiental",
   "Ingenieria",
-  "Entrenamiento",
+  "SST",
 ]
 
 function ProjectCard({
@@ -115,9 +126,32 @@ function ProjectCard({
         <h3 className="mt-2 text-lg font-bold text-foreground transition-colors group-hover:text-primary">
           {project.title}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">
           {project.description}
         </p>
+        
+        {/* Client logos */}
+        {project.clients && project.clients.length > 0 && (
+          <div className="mt-4 pt-4 border-t border-border">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+              Clientes
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              {project.clients.map((client) => (
+                <div
+                  key={client.name}
+                  className="h-12 bg-white rounded-lg p-2 flex items-center justify-center"
+                >
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="h-full w-auto object-contain max-w-[120px]"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

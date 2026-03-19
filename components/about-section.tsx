@@ -84,16 +84,16 @@ export function AboutSection() {
               <span className="text-primary">proposito</span>
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              ISSAR Consulting SAS es una empresa colombiana dedicada a la
-              consultoria especializada en gestion de riesgos, sostenibilidad
-              ambiental e ingenieria. Trabajamos con organizaciones, municipios y
-              empresas para identificar, evaluar y mitigar riesgos, promoviendo
-              el desarrollo sostenible y la resiliencia.
+              ISSAR Consulting SAS es una empresa colombiana que ofrece servicios 
+              integrados de ingeniería, adecuaciones arquitectónicas y apoyo a la 
+              educación ambiental, sostenibilidad y riesgos de organizaciones en 
+              beneficio de comunidades y desarrollo territorial.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Nuestro equipo multidisciplinario combina experiencia tecnica con
-              un profundo compromiso por el medio ambiente y las comunidades,
-              entregando soluciones innovadoras que generan impacto positivo.
+              Nuestro equipo multidisciplinario trabaja con entidades como 
+              Aeronáutica Civil, INVIAS, ENTerritorio y el sector petrolero, 
+              entregando soluciones técnicas de alto impacto que promueven el 
+              desarrollo sostenible del país.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
