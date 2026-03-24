@@ -1,8 +1,32 @@
 "use client"
 
-import { Target, Eye, Award, Users } from "lucide-react"
+import { Target, Eye, Award, Users, Search, Building2, UserCheck } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { cn } from "@/lib/utils"
+
+const pillars3C = [
+  {
+    letter: "C1",
+    title: "Consultoría",
+    description: "Asesorías especializadas en gestión de riesgos, estudios ambientales y sostenibilidad.",
+    icon: Search,
+    color: "bg-primary",
+  },
+  {
+    letter: "C2",
+    title: "Construcciones",
+    description: "Ingeniería, proyectos de construcción e interventoría.",
+    icon: Building2,
+    color: "bg-accent",
+  },
+  {
+    letter: "C3",
+    title: "Coaching",
+    description: "Capacitación, SST y educación ambiental.",
+    icon: UserCheck,
+    color: "bg-teal-600",
+  },
+]
 
 const values = [
   {
@@ -89,12 +113,27 @@ export function AboutSection() {
               educación ambiental, sostenibilidad y riesgos de organizaciones en 
               beneficio de comunidades y desarrollo territorial.
             </p>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Nuestro equipo multidisciplinario trabaja con entidades como 
-              Aeronáutica Civil, INVIAS, ENTerritorio y el sector petrolero, 
-              entregando soluciones técnicas de alto impacto que promueven el 
-              desarrollo sostenible del país.
-            </p>
+            {/* 3 Pillars Mini Display */}
+            <div className="mt-8 grid grid-cols-3 gap-3">
+              {pillars3C.map((pillar) => (
+                <div
+                  key={pillar.letter}
+                  className="group flex flex-col items-center text-center p-4 rounded-xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg"
+                >
+                  <div
+                    className={cn(
+                      "flex h-10 w-10 items-center justify-center rounded-full text-white font-bold text-sm",
+                      pillar.color
+                    )}
+                  >
+                    {pillar.letter}
+                  </div>
+                  <h4 className="mt-2 text-sm font-bold text-foreground">
+                    {pillar.title}
+                  </h4>
+                </div>
+              ))}
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <a

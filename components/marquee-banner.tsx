@@ -1,16 +1,18 @@
 "use client"
 
 const items = [
-  "Gestion de Riesgos",
-  "Sostenibilidad Ambiental",
-  "Estudios Geologicos",
-  "Huella de Carbono",
-  "Ingenieria Sostenible",
-  "Entrenamiento",
-  "Empresas BIC",
-  "Seguridad y Salud",
+  "Consultoría",
+  "Construcciones",
+  "Coaching",
+  "Gestión de Riesgos",
   "Estudios Ambientales",
-  "ODS",
+  "Huella de Carbono",
+  "Empresas BIC",
+  "SST",
+  "Higiene Industrial",
+  "Interventoría",
+  "Ingeniería",
+  "Educación Ambiental",
 ]
 
 export function MarqueeBanner() {
