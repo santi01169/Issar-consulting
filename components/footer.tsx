@@ -4,10 +4,10 @@ import { MapPin, Mail, Phone } from "lucide-react"
 
 const footerLinks = {
   servicios: [
-    { label: "Gestion de Riesgos", href: "#servicios" },
-    { label: "Sostenibilidad Ambiental", href: "#servicios" },
-    { label: "Ingenieria y Adecuaciones", href: "#servicios" },
-    { label: "Entrenamiento", href: "#servicios" },
+    { label: "C1 - Consultoría", href: "#servicios" },
+    { label: "C2 - Construcciones", href: "#servicios" },
+    { label: "C3 - Coaching y SST", href: "#servicios" },
+    { label: "Estudios Ambientales", href: "#servicios" },
   ],
   empresa: [
     { label: "Inicio", href: "#inicio" },
@@ -24,19 +24,13 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary font-sans font-bold text-lg text-primary-foreground">
-                IS
-              </div>
-              <div className="flex flex-col">
-                <span className="text-sm font-bold leading-none text-background">
-                  ISSAR
-                </span>
-                <span className="text-[10px] font-medium tracking-widest uppercase text-background/50">
-                  Consulting SAS
-                </span>
-              </div>
-            </div>
+            <a href="#inicio">
+              <img
+                src="/images/logo-issar.png"
+                alt="ISSAR Consulting SAS"
+                className="h-14 w-auto brightness-0 invert"
+              />
+            </a>
             <p className="mt-4 text-sm leading-relaxed text-background/60">
               Hoy es un dia perfecto para reinventar tu futuro de manera
               sostenible.

@@ -35,37 +35,15 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#inicio" className="flex items-center gap-2">
-          <div
+        <a href="#inicio" className="flex items-center">
+          <img
+            src="/images/logo-issar.png"
+            alt="ISSAR Consulting SAS"
             className={cn(
-              "flex h-10 w-10 items-center justify-center rounded-lg font-sans font-bold text-lg transition-colors duration-300",
-              isScrolled
-                ? "bg-primary text-primary-foreground"
-                : "bg-primary/90 text-primary-foreground"
+              "h-12 w-auto transition-all duration-300",
+              isScrolled ? "brightness-100" : "brightness-0 invert"
             )}
-          >
-            IS
-          </div>
-          <div className="flex flex-col">
-            <span
-              className={cn(
-                "text-sm font-bold leading-none transition-colors duration-300",
-                isScrolled ? "text-foreground" : "text-primary-foreground"
-              )}
-            >
-              ISSAR
-            </span>
-            <span
-              className={cn(
-                "text-[10px] font-medium tracking-widest uppercase transition-colors duration-300",
-                isScrolled
-                  ? "text-muted-foreground"
-                  : "text-primary-foreground/70"
-              )}
-            >
-              Consulting
-            </span>
-          </div>
+          />
         </a>
 
         {/* Desktop Nav */}
