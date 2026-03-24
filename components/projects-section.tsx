@@ -36,7 +36,7 @@ const projects = [
     location: "Colombia",
     description:
       "Formulación, estructuración, estudios y diseños definitivos - Fase 3 del corredor vial y acompañamiento durante la etapa de viabilización y aprobación con los requisitos del Sistema General de Regalías.",
-    image: "/images/projects/corredor-santa-lucia.png",
+    image: "/images/projects/santa_lucia.jpg",
     clients: [
       { name: "ENTerritorio - JPS Ingeniería", logo: "/images/clients/enterritorio-jps.png" },
     ],
@@ -129,7 +129,7 @@ function ProjectCard({
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">
           {project.description}
         </p>
-        
+
         {/* Client logos */}
         {project.clients && project.clients.length > 0 && (
           <div className="mt-4 pt-4 border-t border-border">
