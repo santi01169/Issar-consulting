@@ -12,10 +12,10 @@ const highlights = [
 
 const carouselImages = [
   { src: "/images/hero-bg.jpg", alt: "Paisaje colombiano sostenible" },
-  { src: "/images/projects/aeropuerto-rionegro.png", alt: "Aeropuerto Rionegro" },
-  { src: "/images/projects/corredor-santa-lucia.png", alt: "Corredor Santa Lucía" },
-  { src: "/images/projects/puente-el-paso.png", alt: "Puente El Paso" },
-  { src: "/images/projects/red-vial-sumapaz.png", alt: "Red Vial Sumapaz" },
+  { src: "/images/carousel/ingenieria-puentes.jpg", alt: "Ingenieria de puentes e infraestructura" },
+  { src: "/images/carousel/sostenibilidad-ambiental.jpg", alt: "Sostenibilidad y conservacion ambiental" },
+  { src: "/images/carousel/gestion-riesgos.jpg", alt: "Gestion de riesgos urbanos" },
+  { src: "/images/carousel/construccion-moderna.jpg", alt: "Construccion sostenible moderna" },
 ]
 
 const SLIDE_INTERVAL = 5000 // ms
