@@ -30,6 +30,7 @@ const pillars = [
     icon: Search,
     color: "from-primary to-primary/80",
     bgColor: "bg-primary",
+    image: "/images/services/consultoria.jpg",
     services: [
       {
         icon: AlertTriangle,
@@ -61,6 +62,7 @@ const pillars = [
     icon: Building2,
     color: "from-accent to-amber-500",
     bgColor: "bg-accent",
+    image: "/images/services/construcciones.jpg",
     services: [
       {
         icon: HardHat,
@@ -92,6 +94,7 @@ const pillars = [
     icon: Users,
     color: "from-teal-600 to-teal-500",
     bgColor: "bg-teal-600",
+    image: "/images/services/coaching.jpg",
     services: [
       {
         icon: ShieldCheck,
@@ -261,29 +264,47 @@ export function ServicesSection() {
 
         {/* Active Pillar Services */}
         <div className="mt-12">
-          <div className="flex items-center gap-3 mb-8">
-            <div
-              className={cn(
-                "flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br text-white font-bold",
-                currentPillar.color
-              )}
-            >
-              {currentPillar.letter}
+          <div className="grid gap-8 lg:grid-cols-5">
+            {/* Pillar Image */}
+            <div className="lg:col-span-2">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-primary/10 aspect-[4/3]">
+                <img
+                  src={currentPillar.image}
+                  alt={currentPillar.title}
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={cn(
+                        "flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br text-white font-bold text-lg shadow-lg",
+                        currentPillar.color
+                      )}
+                    >
+                      {currentPillar.letter}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white">
+                        {currentPillar.title}
+                      </h3>
+                      <p className="text-sm text-white/80">
+                        {currentPillar.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="text-xl font-bold text-foreground">
-                {currentPillar.title}
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {currentPillar.subtitle}
-              </p>
-            </div>
-          </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {currentPillar.services.map((service, i) => (
-              <ServiceItem key={service.title} service={service} index={i} />
-            ))}
+            {/* Services Grid */}
+            <div className="lg:col-span-3">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {currentPillar.services.map((service, i) => (
+                  <ServiceItem key={service.title} service={service} index={i} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
