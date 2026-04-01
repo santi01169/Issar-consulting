@@ -33,26 +33,38 @@ const projects = [
   {
     title: "Corredor Vial Santa Lucía Los Mangos",
     category: "Ingenieria",
-    location: "Colombia",
+    location: "Nariño, Colombia",
     description:
-      "Formulación, estructuración, estudios y diseños definitivos - Fase 3 del corredor vial y acompañamiento durante la etapa de viabilización y aprobación con los requisitos del Sistema General de Regalías.",
-    image: "/images/projects/santa_lucia.jpg",
+      "Estudio de Amenazas y Riesgos: Producto 11 del Contrato No. 2020517. Formulación, estructuración, estudios y diseños definitivos - Fase 3 del corredor vial y acompañamiento durante la etapa de viabilización con los requisitos del Sistema General de Regalías.",
+    image: "/images/projects/santa-lucia-aerial.jpg",
     clients: [
       { name: "ENTerritorio - JPS Ingeniería", logo: "/images/clients/enterritorio-jps.png" },
     ],
     stats: { label: "Fase", value: "3" },
   },
   {
-    title: "Seguridad y Salud en el Trabajo - ECOPETROL",
-    category: "SST",
-    location: "Nacional",
+    title: "Marginal del Río Cauca - El Tambo, Cajibío, Morales",
+    category: "Gestion de Riesgos",
+    location: "Cauca, Colombia",
     description:
-      "Asesoría en la gestión de SST con el contrato 3021707 de ECOPETROL para servicio de ingeniería y supervisión integral de pozos: planeación, perforación, terminación, completamiento, pruebas, reacondicionamiento, mantenimiento y abandono.",
-    image: "/images/project-engineering.jpg",
+      "Estudio de análisis y gestión de riesgo de la Marginal del Río Cauca - Conexión El Tambo - Cajibío - Morales, en el Departamento del Cauca.",
+    image: "/images/projects/rio-cauca-road.jpg",
     clients: [
-      { name: "Unión Temporal WES", logo: "/images/clients/union-temporal-wes.png" },
+      { name: "Gobernación del Cauca", logo: "/images/clients/gobernacion-cauca.png" },
     ],
-    stats: { label: "Periodo", value: "2020-21" },
+    stats: { label: "Municipios", value: "3" },
+  },
+  {
+    title: "Gestión del Riesgo - Hospital de Coveñas",
+    category: "Gestion de Riesgos",
+    location: "Sucre, Colombia",
+    description:
+      "Gestión del riesgo de desastres. Dotación del Hospital de Coveñas, en el Municipio de Coveñas, Departamento de Sucre, identificado en el marco del Pacto Funcional Golfo de Morrosquillo.",
+    image: "/images/projects/hospital-covenas-coast.jpg",
+    clients: [
+      { name: "CURE y CIA - Findeter", logo: "/images/clients/cure-findeter.png" },
+    ],
+    stats: { label: "Pacto", value: "GMQ" },
   },
 ]
 
@@ -60,7 +72,6 @@ const categories = [
   "Todos",
   "Gestion de Riesgos",
   "Ingenieria",
-  "SST",
 ]
 
 function ProjectCard({
@@ -162,9 +173,16 @@ export function ProjectsSection() {
   const { ref: titleRef, isVisible: titleVisible } =
     useScrollAnimation<HTMLDivElement>()
 
+  // When "Todos" is selected, show 4 projects (2 from each category)
+  // When a specific category is selected, show all projects of that category
   const filtered =
     activeFilter === "Todos"
-      ? projects
+      ? [
+          projects[0], // Aeropuerto - Gestion de Riesgos
+          projects[1], // Puentes - Ingenieria
+          projects[3], // Rio Cauca - Gestion de Riesgos
+          projects[2], // Santa Lucia - Ingenieria
+        ]
       : projects.filter((p) => p.category === activeFilter)
 
   return (
