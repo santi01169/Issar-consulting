@@ -36,7 +36,7 @@ const projects = [
     location: "Nariño, Colombia",
     description:
       "Estudio de Amenazas y Riesgos: Producto 11 del Contrato No. 2020517. Formulación, estructuración, estudios y diseños definitivos - Fase 3 del corredor vial y acompañamiento durante la etapa de viabilización con los requisitos del Sistema General de Regalías.",
-    image: "/images/projects/santa-lucia-mangos.png",
+    image: "/images/projects/santa-lucia-aerial.jpg",
     clients: [
       { name: "ENTerritorio - JPS Ingeniería", logo: "/images/clients/enterritorio-jps.png" },
     ],
@@ -48,7 +48,7 @@ const projects = [
     location: "Cauca, Colombia",
     description:
       "Estudio de análisis y gestión de riesgo de la Marginal del Río Cauca - Conexión El Tambo - Cajibío - Morales, en el Departamento del Cauca.",
-    image: "/images/projects/rio-cauca.png",
+    image: "/images/projects/rio-cauca-road.jpg",
     clients: [
       { name: "Gobernación del Cauca", logo: "/images/clients/gobernacion-cauca.png" },
     ],
@@ -60,7 +60,7 @@ const projects = [
     location: "Sucre, Colombia",
     description:
       "Gestión del riesgo de desastres. Dotación del Hospital de Coveñas, en el Municipio de Coveñas, Departamento de Sucre, identificado en el marco del Pacto Funcional Golfo de Morrosquillo.",
-    image: "/images/projects/hospital-covenas.png",
+    image: "/images/projects/hospital-covenas-coast.jpg",
     clients: [
       { name: "CURE y CIA - Findeter", logo: "/images/clients/cure-findeter.png" },
     ],
@@ -173,14 +173,16 @@ export function ProjectsSection() {
   const { ref: titleRef, isVisible: titleVisible } =
     useScrollAnimation<HTMLDivElement>()
 
-  // When "Todos" is selected, show only the first project of each category
+  // When "Todos" is selected, show 4 projects (2 from each category)
   // When a specific category is selected, show all projects of that category
   const filtered =
     activeFilter === "Todos"
-      ? categories
-          .filter((cat) => cat !== "Todos")
-          .map((cat) => projects.find((p) => p.category === cat))
-          .filter(Boolean) as typeof projects
+      ? [
+          projects[0], // Aeropuerto - Gestion de Riesgos
+          projects[1], // Puentes - Ingenieria
+          projects[3], // Rio Cauca - Gestion de Riesgos
+          projects[2], // Santa Lucia - Ingenieria
+        ]
       : projects.filter((p) => p.category === activeFilter)
 
   return (
