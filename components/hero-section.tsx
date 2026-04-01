@@ -10,25 +10,76 @@ const highlights = [
   { icon: GraduationCap, label: "Entrenamiento" },
 ]
 
+const carouselImages = [
+  { src: "/images/hero-bg.jpg", alt: "Paisaje colombiano sostenible" },
+  { src: "/images/projects/aeropuerto-rionegro.png", alt: "Aeropuerto Rionegro" },
+  { src: "/images/projects/corredor-santa-lucia.png", alt: "Corredor Santa Lucía" },
+  { src: "/images/projects/puente-el-paso.png", alt: "Puente El Paso" },
+  { src: "/images/projects/red-vial-sumapaz.png", alt: "Red Vial Sumapaz" },
+]
+
+const SLIDE_INTERVAL = 5000 // ms
+
 export function HeroSection() {
   const [loaded, setLoaded] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [nextSlide, setNextSlide] = useState<number | null>(null)
+  const [fading, setFading] = useState(false)
 
   useEffect(() => {
     setLoaded(true)
   }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const next = (currentSlide + 1) % carouselImages.length
+      setNextSlide(next)
+      setFading(true)
+      setTimeout(() => {
+        setCurrentSlide(next)
+        setNextSlide(null)
+        setFading(false)
+      }, 900) // match transition duration
+    }, SLIDE_INTERVAL)
+    return () => clearInterval(timer)
+  }, [currentSlide])
+
+  const goToSlide = (index: number) => {
+    if (index === currentSlide || fading) return
+    setNextSlide(index)
+    setFading(true)
+    setTimeout(() => {
+      setCurrentSlide(index)
+      setNextSlide(null)
+      setFading(false)
+    }, 900)
+  }
 
   return (
     <section
       id="inicio"
       className="relative flex min-h-screen items-center overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Carousel */}
       <div className="absolute inset-0">
+        {/* Current slide */}
         <img
-          src="/images/hero-bg.jpg"
-          alt="Paisaje colombiano sostenible"
-          className="h-full w-full object-cover"
+          key={`current-${currentSlide}`}
+          src={carouselImages[currentSlide].src}
+          alt={carouselImages[currentSlide].alt}
+          className="absolute h-full w-full object-cover transition-opacity duration-[900ms]"
+          style={{ opacity: fading ? 0 : 1 }}
         />
+        {/* Next slide (fades in) */}
+        {nextSlide !== null && (
+          <img
+            key={`next-${nextSlide}`}
+            src={carouselImages[nextSlide].src}
+            alt={carouselImages[nextSlide].alt}
+            className="absolute h-full w-full object-cover transition-opacity duration-[900ms]"
+            style={{ opacity: fading ? 1 : 0 }}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-foreground/80" />
       </div>
 
@@ -66,11 +117,10 @@ export function HeroSection() {
         <div className="max-w-3xl">
           {/* Tag */}
           <div
-            className={`inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 backdrop-blur-sm transition-all duration-700 ${
-              loaded
-                ? "translate-y-0 opacity-100"
-                : "translate-y-6 opacity-0"
-            }`}
+            className={`inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 backdrop-blur-sm transition-all duration-700 ${loaded
+              ? "translate-y-0 opacity-100"
+              : "translate-y-6 opacity-0"
+              }`}
           >
             <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
             <span className="text-xs font-semibold tracking-wider uppercase text-primary-foreground/90">
@@ -80,11 +130,10 @@ export function HeroSection() {
 
           {/* Heading */}
           <h1
-            className={`mt-6 text-4xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-5xl lg:text-7xl text-balance transition-all duration-700 delay-200 ${
-              loaded
-                ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
-            }`}
+            className={`mt-6 text-4xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-5xl lg:text-7xl text-balance transition-all duration-700 delay-200 ${loaded
+              ? "translate-y-0 opacity-100"
+              : "translate-y-8 opacity-0"
+              }`}
           >
             Reinventa tu futuro{" "}
             <span className="text-accent">de manera sostenible</span>
@@ -92,24 +141,20 @@ export function HeroSection() {
 
           {/* Description */}
           <p
-            className={`mt-6 max-w-xl text-lg leading-relaxed text-primary-foreground/80 transition-all duration-700 delay-400 ${
-              loaded
-                ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
-            }`}
+            className={`mt-6 max-w-xl text-lg leading-relaxed text-primary-foreground/80 transition-all duration-700 delay-400 ${loaded
+              ? "translate-y-0 opacity-100"
+              : "translate-y-8 opacity-0"
+              }`}
           >
-            Consultoria y asesoria especializada en gestion de riesgos,
-            sostenibilidad ambiental e ingenieria para organizaciones y
-            municipios en Colombia.
+            Servicios de consultoría y asesoría especializada en gestión de proyectos, sostenibilidad ambiental e ingeniería, orientados a fortalecer el desarrollo eficiente de organizaciones y municipios en Colombia.
           </p>
 
           {/* CTA Buttons */}
           <div
-            className={`mt-10 flex flex-wrap gap-4 transition-all duration-700 delay-500 ${
-              loaded
-                ? "translate-y-0 opacity-100"
-                : "translate-y-8 opacity-0"
-            }`}
+            className={`mt-10 flex flex-wrap gap-4 transition-all duration-700 delay-500 ${loaded
+              ? "translate-y-0 opacity-100"
+              : "translate-y-8 opacity-0"
+              }`}
           >
             <a
               href="#servicios"
@@ -132,9 +177,8 @@ export function HeroSection() {
 
         {/* Service Highlight Pills */}
         <div
-          className={`mt-16 flex flex-wrap gap-3 transition-all duration-700 delay-700 ${
-            loaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-          }`}
+          className={`mt-16 flex flex-wrap gap-3 transition-all duration-700 delay-700 ${loaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
         >
           {highlights.map((item, i) => (
             <div
@@ -149,6 +193,22 @@ export function HeroSection() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Carousel dot indicators */}
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {carouselImages.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goToSlide(i)}
+            aria-label={`Slide ${i + 1}`}
+            className={`h-2 rounded-full transition-all duration-500 ${
+              i === currentSlide
+                ? "w-6 bg-accent"
+                : "w-2 bg-primary-foreground/40 hover:bg-primary-foreground/70"
+            }`}
+          />
+        ))}
       </div>
 
       {/* Scroll indicator */}

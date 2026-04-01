@@ -16,7 +16,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Direccion",
-    value: "Carrera 55a Nro 163 - 35",
+    value: "Carrera 46 # 163B - 29 - interior 104",
     detail: "Bogota, Colombia",
   },
   {
