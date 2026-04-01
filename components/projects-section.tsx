@@ -66,25 +66,12 @@ const projects = [
     ],
     stats: { label: "Pacto", value: "GMQ" },
   },
-  {
-    title: "Seguridad y Salud en el Trabajo - ECOPETROL",
-    category: "SST",
-    location: "Nacional",
-    description:
-      "Asesoría en la gestión de SST con el contrato 3021707 de ECOPETROL para servicio de ingeniería y supervisión integral de pozos: planeación, perforación, terminación, completamiento, pruebas, reacondicionamiento, mantenimiento y abandono.",
-    image: "/images/project-engineering.jpg",
-    clients: [
-      { name: "Unión Temporal WES", logo: "/images/clients/union-temporal-wes.png" },
-    ],
-    stats: { label: "Periodo", value: "2020-21" },
-  },
 ]
 
 const categories = [
   "Todos",
   "Gestion de Riesgos",
   "Ingenieria",
-  "SST",
 ]
 
 function ProjectCard({
@@ -186,9 +173,14 @@ export function ProjectsSection() {
   const { ref: titleRef, isVisible: titleVisible } =
     useScrollAnimation<HTMLDivElement>()
 
+  // When "Todos" is selected, show only the first project of each category
+  // When a specific category is selected, show all projects of that category
   const filtered =
     activeFilter === "Todos"
-      ? projects
+      ? categories
+          .filter((cat) => cat !== "Todos")
+          .map((cat) => projects.find((p) => p.category === cat))
+          .filter(Boolean) as typeof projects
       : projects.filter((p) => p.category === activeFilter)
 
   return (
