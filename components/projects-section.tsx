@@ -33,14 +33,38 @@ const projects = [
   {
     title: "Corredor Vial Santa Lucía Los Mangos",
     category: "Ingenieria",
-    location: "Colombia",
+    location: "Nariño, Colombia",
     description:
-      "Formulación, estructuración, estudios y diseños definitivos - Fase 3 del corredor vial y acompañamiento durante la etapa de viabilización y aprobación con los requisitos del Sistema General de Regalías.",
-    image: "/images/projects/santa_lucia.jpg",
+      "Estudio de Amenazas y Riesgos: Producto 11 del Contrato No. 2020517. Formulación, estructuración, estudios y diseños definitivos - Fase 3 del corredor vial y acompañamiento durante la etapa de viabilización con los requisitos del Sistema General de Regalías.",
+    image: "/images/projects/santa-lucia-mangos.png",
     clients: [
       { name: "ENTerritorio - JPS Ingeniería", logo: "/images/clients/enterritorio-jps.png" },
     ],
     stats: { label: "Fase", value: "3" },
+  },
+  {
+    title: "Marginal del Río Cauca - El Tambo, Cajibío, Morales",
+    category: "Gestion de Riesgos",
+    location: "Cauca, Colombia",
+    description:
+      "Estudio de análisis y gestión de riesgo de la Marginal del Río Cauca - Conexión El Tambo - Cajibío - Morales, en el Departamento del Cauca.",
+    image: "/images/projects/rio-cauca.png",
+    clients: [
+      { name: "Gobernación del Cauca", logo: "/images/clients/gobernacion-cauca.png" },
+    ],
+    stats: { label: "Municipios", value: "3" },
+  },
+  {
+    title: "Gestión del Riesgo - Hospital de Coveñas",
+    category: "Gestion de Riesgos",
+    location: "Sucre, Colombia",
+    description:
+      "Gestión del riesgo de desastres. Dotación del Hospital de Coveñas, en el Municipio de Coveñas, Departamento de Sucre, identificado en el marco del Pacto Funcional Golfo de Morrosquillo.",
+    image: "/images/projects/hospital-covenas.png",
+    clients: [
+      { name: "CURE y CIA - Findeter", logo: "/images/clients/cure-findeter.png" },
+    ],
+    stats: { label: "Pacto", value: "GMQ" },
   },
   {
     title: "Seguridad y Salud en el Trabajo - ECOPETROL",
