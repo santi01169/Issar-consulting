@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 const projects = [
   {
     title: "Gestión de Riesgos Aeropuerto José María Córdova",
-    category: "Gestion de Riesgos",
+    category: "Consultoría",
     location: "Rionegro, Antioquia",
     description:
       "Identificación, clasificación, evaluación y calificación de los riesgos de la construcción de franjas de seguridad, obras hidráulicas, obras de mitigación y/o contención, incluyendo trámite ambiental y predial.",
@@ -19,8 +19,8 @@ const projects = [
     stats: { label: "Aeropuerto", value: "JMC" },
   },
   {
-    title: "Estudios Puentes El Paso, El Totumo y Río Sumapaz",
-    category: "Ingenieria",
+    title: "Estudio Puente El Paso, El Totumo y Río Sumapaz",
+    category: "Construcciones",
     location: "Huila y Tolima",
     description:
       "Estudio de análisis y gestión del riesgo Puente El Paso. Estudios y diseños para los puentes El Totumo (Huila) y Puente sobre el Río Sumapaz, Puente El Paso (Tolima). Estudios técnicos Fase II avanzada.",
@@ -32,7 +32,7 @@ const projects = [
   },
   {
     title: "Corredor Vial Santa Lucía Los Mangos",
-    category: "Ingenieria",
+    category: "Construcciones",
     location: "Nariño, Colombia",
     description:
       "Estudio de Amenazas y Riesgos: Producto 11 del Contrato No. 2020517. Formulación, estructuración, estudios y diseños definitivos - Fase 3 del corredor vial y acompañamiento durante la etapa de viabilización con los requisitos del Sistema General de Regalías.",
@@ -44,7 +44,7 @@ const projects = [
   },
   {
     title: "Marginal del Río Cauca - El Tambo, Cajibío, Morales",
-    category: "Gestion de Riesgos",
+    category: "Consultoría",
     location: "Cauca, Colombia",
     description:
       "Estudio de análisis y gestión de riesgo de la Marginal del Río Cauca - Conexión El Tambo - Cajibío - Morales, en el Departamento del Cauca.",
@@ -56,7 +56,7 @@ const projects = [
   },
   {
     title: "Gestión del Riesgo - Hospital de Coveñas",
-    category: "Gestion de Riesgos",
+    category: "Consultoría",
     location: "Sucre, Colombia",
     description:
       "Gestión del riesgo de desastres. Dotación del Hospital de Coveñas, en el Municipio de Coveñas, Departamento de Sucre, identificado en el marco del Pacto Funcional Golfo de Morrosquillo.",
@@ -66,12 +66,92 @@ const projects = [
     ],
     stats: { label: "Pacto", value: "GMQ" },
   },
+  {
+    title: "Interventoría Vías Terciarias Colombia Rural - Meta",
+    category: "Construcciones",
+    location: "Meta, Colombia",
+    description:
+      "Interventoría Técnica, Administrativa, Financiera y Ambiental para el mantenimiento y mejoramiento de vías terciarias del Programa Colombia Rural, Municipios Grupo 4 del Departamento del Meta (2021). Plan de Adaptación a la Guía Ambiental de INVIAS PAGA. Construcción de placa huella, afirmado y base tratada con cemento de la vía San Juanito – Calvario, Meta (2022).",
+    image: "/images/projects/vias-meta.png",
+    clients: [
+      { name: "INVIAS - JPS Ingeniería", logo: "/images/clients/invias-jps-meta.png" },
+    ],
+    stats: { label: "Año", value: "2022" },
+  },
+  {
+    title: "Interventoría Ambiental - Corredor El Calvario – Caño Negro",
+    category: "Consultoría",
+    location: "El Calvario, Meta",
+    description:
+      "Interventoría Ambiental para el mantenimiento y mejoramiento del Corredor El Calvario \u2013 Caño Negro en el marco del Programa Colombia Rural del Instituto Nacional de Vías (INVIAS), en el Municipio de El Calvario, Departamento del Meta.",
+    image: "/images/projects/calvario-cano-negro.jpg",
+    clients: [
+      { name: "INVIAS - Alcaldía de El Calvario", logo: "/images/clients/invias-calvario.png" },
+    ],
+    stats: { label: "Meta", value: "INVIAS" },
+  },
+  {
+    title: "Plan de Manejo Ambiental - Edificio Calle 97",
+    category: "Consultoría",
+    location: "Bogotá D.C., Colombia",
+    description:
+      "Elaboración del Plan de Manejo Ambiental (PMA) y Plan de Gestión Integral de Residuos de Construcción y Demolición (RCD) para la construcción del proyecto arquitectónico Edificio Calle 97 No. 19A – 54 / 68, en cumplimiento de la normativa ambiental vigente.",
+    image: "/images/projects/edificio-calle97.jpg",
+    clients: [
+      { name: "CURE Y CIA S.A.S - Inversiones Chila S.A.S", logo: "/images/clients/cure-chila.png" },
+    ],
+    stats: { label: "Bogotá", value: "RCD" },
+  },
+  {
+    title: "SST – Pozos Ecopetrol / Global Petroleum Services",
+    category: "Coaching",
+    location: "Colombia",
+    description:
+      "Asesoría en la gestión de Seguridad y Salud en el Trabajo (SST/HSE) a Global Petroleum Services Ltda. en el Contrato 3021707 de ECOPETROL: servicio de ingeniería y supervisión integral de pozos para planeación, perforación, terminación, completamiento, pruebas, reacondicionamiento, mantenimiento y abandono de pozos. Cumplimiento de anexos y obligaciones HSE del contratista. 2020 – 2021.",
+    image: "/images/clients/wes1.png",
+    clients: [
+      { name: "Unión Temporal WES – Global Petroleum Services", logo: "/images/clients/wes.png" },
+    ],
+    stats: { label: "HSE", value: "2021" },
+  },
+  {
+    title: "Adecuación de Espacios Interiores",
+    category: "Adecuaciones Arquitectónicas",
+    location: "Medellín, Antioquia",
+    description:
+      "Adecuación de espacios interiores con acabados en drywall, cielos rasos y pintura de alta calidad. Transformación total de ambientes residenciales y comerciales con materiales premium y mano de obra especializada.",
+    image: "/images/projects/adecuaciones/techo-drywall.jpg",
+    clients: [],
+    stats: { label: "Acabados", value: "A+" },
+  },
+  {
+    title: "Remodelación Integral de Cocina",
+    category: "Adecuaciones Arquitectónicas",
+    location: "Medellín, Antioquia",
+    description:
+      "Remodelación integral de cocina con mesón en cuarzo blanco, muebles en laca de alta gama, isla central funcional, enchape hexagonal botánico y luminarias tipo péndulo con detalles en dorado. Diseño moderno y funcional.",
+    image: "/images/projects/adecuaciones/cocina-premium.png",
+    clients: [],
+    stats: { label: "Diseño", value: "XL" },
+  },
+  {
+    title: "Adecuación de Baño con Enchape en Mármol",
+    category: "Adecuaciones Arquitectónicas",
+    location: "Medellín, Antioquia",
+    description:
+      "Adecuación completa de baño con enchape en mármol veteado, ducha de lluvia empotrada, vanity en madera natural, mesón en cuarzo y espejo con iluminación integrada. Acabados de lujo con atención al detalle.",
+    image: "/images/projects/adecuaciones/bano-marmol.png",
+    clients: [],
+    stats: { label: "Lujo", value: "5★" },
+  },
 ]
 
 const categories = [
   "Todos",
-  "Gestion de Riesgos",
-  "Ingenieria",
+  "Consultoría",
+  "Construcciones",
+  "Adecuaciones Arquitectónicas",
+  "Coaching",
 ]
 
 function ProjectCard({
@@ -82,6 +162,7 @@ function ProjectCard({
   index: number
 }) {
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>(0.1)
+  const isArq = project.category === "Adecuaciones Arquitectónicas"
 
   return (
     <div
@@ -93,11 +174,14 @@ function ProjectCard({
       style={{ transitionDelay: `${index * 150}ms` }}
     >
       {/* Image */}
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <div className={cn("relative overflow-hidden", isArq ? "aspect-[3/4]" : "aspect-[4/3]", isArq && "bg-white")}>
         <img
           src={project.image}
           alt={project.title}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className={cn(
+            "h-full w-full transition-transform duration-700 group-hover:scale-105",
+            isArq ? "object-contain" : "object-cover group-hover:scale-110"
+          )}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
 
@@ -173,16 +257,18 @@ export function ProjectsSection() {
   const { ref: titleRef, isVisible: titleVisible } =
     useScrollAnimation<HTMLDivElement>()
 
-  // When "Todos" is selected, show 4 projects (2 from each category)
-  // When a specific category is selected, show all projects of that category
+  // When "Todos" is selected, show one representative project from each pillar
+  // When a specific pillar is selected, show all projects of that pillar
   const filtered =
     activeFilter === "Todos"
       ? [
-          projects[0], // Aeropuerto - Gestion de Riesgos
-          projects[1], // Puentes - Ingenieria
-          projects[3], // Rio Cauca - Gestion de Riesgos
-          projects[2], // Santa Lucia - Ingenieria
-        ]
+        projects[0], // Aeropuerto - Consultoría
+        projects[1], // Puentes - Construcciones
+        projects[4], // Hospital Coveñas - Consultoría
+        projects[5], // Vías Meta - Construcciones
+        projects[8], // SST Ecopetrol - Coaching
+        projects[7], // PMA Calle 97 - Consultoría
+      ]
       : projects.filter((p) => p.category === activeFilter)
 
   return (
@@ -230,7 +316,12 @@ export function ProjectsSection() {
         </div>
 
         {/* Projects Grid */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+        <div className={cn(
+          "mt-12 grid gap-6",
+          filtered.length >= 3
+            ? "sm:grid-cols-2 lg:grid-cols-3"
+            : "sm:grid-cols-2 lg:grid-cols-2"
+        )}>
           {filtered.map((project, i) => (
             <ProjectCard key={project.title} project={project} index={i} />
           ))}

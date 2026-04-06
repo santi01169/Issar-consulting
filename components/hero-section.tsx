@@ -16,6 +16,7 @@ const carouselImages = [
   { src: "/images/carousel/sostenibilidad-ambiental.jpg", alt: "Sostenibilidad y conservacion ambiental" },
   { src: "/images/carousel/gestion-riesgos.jpg", alt: "Gestion de riesgos urbanos" },
   { src: "/images/carousel/construccion-moderna.jpg", alt: "Construccion sostenible moderna" },
+  { src: "/images/carousel/mirador-colibri.jpg", alt: "Visita tecnica Mirador El Colibri" },
 ]
 
 const SLIDE_INTERVAL = 5000 // ms
