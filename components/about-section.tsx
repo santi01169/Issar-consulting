@@ -107,12 +107,33 @@ export function AboutSection() {
               Una consultora con{" "}
               <span className="text-primary">proposito</span>
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              ISSAR Consulting SAS es una empresa colombiana que ofrece servicios 
-              integrados de ingeniería, adecuaciones arquitectónicas y apoyo a la 
-              educación ambiental, sostenibilidad y riesgos de organizaciones en 
-              beneficio de comunidades y desarrollo territorial.
+            <p className="mt-6 text-xl font-medium leading-relaxed text-foreground text-balance">
+              ISSAR Consulting SAS es una empresa colombiana que ofrece servicios integrados enfocados en el beneficio de las comunidades y el desarrollo territorial.
             </p>
+
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground">
+              <p>
+                Contamos con una formación sólida en las áreas del componente geoesférico, hidrogeología, amenazas y riesgos, sostenibilidad e impacto ambiental, valoración socioeconómica, huella de carbono y normas IFC. Nos especializamos en la consultoría de infraestructura y en el soporte técnico a organizaciones y municipios para el ordenamiento de los territorios.
+              </p>
+              <p>
+                Somos profesionales expertos en análisis de riesgos para garantizar la viabilidad y éxito de sus proyectos (CONPES 4117 y Ley 1523 de 2012), promoviendo la adaptación al cambio climático y el cumplimiento de los Objetivos de Desarrollo Sostenible (ODS).
+              </p>
+            </div>
+
+            {/* Certifications Mini Display */}
+            <div className="mt-8 flex flex-col gap-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-primary">Certificaciones y Reconocimientos</span>
+              <div className="group flex border border-border rounded-xl p-2 bg-card w-full items-center gap-4 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+                <div className="h-20 w-28 shrink-0 overflow-hidden rounded bg-white flex items-center justify-center p-1 relative border border-border">
+                  <img src="/images/about/certificado-cicaa.png" alt="Certificado CICAA 2021" className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                </div>
+                <div className="pr-2">
+                  <p className="text-sm font-bold text-foreground">Ponencia CICAA 2021</p>
+                  <p className="text-[11px] font-medium text-primary uppercase mt-0.5">Dra. Ruby Esperanza Rojas Parra</p>
+                  <p className="text-xs text-muted-foreground mt-1 line-clamp-2 max-w-[280px]">El cambio climático en la metodología del análisis y gestión del riesgo de desastres en proyectos de infraestructura.</p>
+                </div>
+              </div>
+            </div>
             {/* 3 Pillars Mini Display */}
             <div className="mt-8 grid grid-cols-3 gap-3">
               {pillars3C.map((pillar) => (

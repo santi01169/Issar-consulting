@@ -30,7 +30,7 @@ const pillars = [
     icon: Search,
     color: "from-primary to-primary/80",
     bgColor: "bg-primary",
-    image: "/images/services/consultoria.jpg",
+    image: "/images/chaleco.jpg",
     services: [
       {
         icon: AlertTriangle,
@@ -243,8 +243,8 @@ export function ServicesSection() {
             Los <span className="text-primary">3 Pilares</span> de ISSAR Consulting
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Servicios integrados de ingeniería, adecuaciones arquitectónicas y apoyo 
-            a la educación ambiental, sostenibilidad y riesgos en beneficio de 
+            Servicios integrados de ingeniería, adecuaciones arquitectónicas y apoyo
+            a la educación ambiental, sostenibilidad y riesgos en beneficio de
             comunidades y desarrollo territorial.
           </p>
         </div>

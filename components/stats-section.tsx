@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils"
 import { useEffect } from "react"
 
 const stats = [
-  { value: 20, suffix: "+", label: "Proyectos Ejecutados" },
-  { value: 10, suffix: "+", label: "Clientes Estratégicos" },
-  { value: 5, suffix: "+", label: "Años de Experiencia" },
+  { value: 21, suffix: "+", label: "Proyectos Ejecutados" },
+  { value: 12, suffix: "+", label: "Clientes Estratégicos" },
+  { value: 6, suffix: "+", label: "Años de Experiencia" },
   { value: 100, suffix: "%", label: "Compromiso Sostenible" },
 ]
 

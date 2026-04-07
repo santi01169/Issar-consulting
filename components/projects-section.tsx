@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { ArrowUpRight, MapPin } from "lucide-react"
+import { useState, useEffect } from "react"
+import { ArrowUpRight, MapPin, X } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { cn } from "@/lib/utils"
 
@@ -53,6 +53,19 @@ const projects = [
       { name: "Gobernación del Cauca", logo: "/images/clients/gobernacion-cauca.png" },
     ],
     stats: { label: "Municipios", value: "3" },
+  },
+  {
+    title: "Gestión de Riesgo Variante Oriental de Popayán",
+    category: "Consultoría",
+    location: "Popayán, Cauca",
+    description:
+      "Estudio de análisis y gestión de riesgo de la Variante Oriental de Popayán, en el departamento del Cauca. Estudios y diseños técnicos definitivos a nivel Fase III.",
+    image: "/images/projects/popayan1.png",
+    imageClassName: "object-contain p-2",
+    clients: [
+      { name: "Consorcio VYJ 007 - Gobernación del Cauca", logo: "/images/clients/consorcio-vyj-007.png" },
+    ],
+    stats: { label: "Fase", value: "III" },
   },
   {
     title: "Gestión del Riesgo - Hospital de Coveñas",
@@ -157,9 +170,11 @@ const categories = [
 function ProjectCard({
   project,
   index,
+  onClick,
 }: {
   project: (typeof projects)[0]
   index: number
+  onClick: () => void
 }) {
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>(0.1)
   const isArq = project.category === "Adecuaciones Arquitectónicas"
@@ -167,20 +182,23 @@ function ProjectCard({
   return (
     <div
       ref={ref}
+      onClick={onClick}
       className={cn(
-        "group relative overflow-hidden rounded-2xl bg-card border border-border transition-all duration-700",
+        "group relative overflow-hidden rounded-2xl bg-card border border-border transition-all duration-700 cursor-pointer hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       )}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
       {/* Image */}
-      <div className={cn("relative overflow-hidden", isArq ? "aspect-[3/4]" : "aspect-[4/3]", isArq && "bg-white")}>
+      <div className={cn("relative overflow-hidden", isArq ? "aspect-[3/4]" : "aspect-[4/3]", (isArq || project.imageClassName) && "bg-white")}>
         <img
           src={project.image}
           alt={project.title}
           className={cn(
-            "h-full w-full transition-transform duration-700 group-hover:scale-105",
-            isArq ? "object-contain" : "object-cover group-hover:scale-110"
+            "h-full w-full transition-transform duration-700",
+            project.imageClassName
+              ? `${project.imageClassName} group-hover:scale-105`
+              : (isArq ? "object-contain group-hover:scale-105" : "object-cover group-hover:scale-110")
           )}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
@@ -254,6 +272,17 @@ function ProjectCard({
 
 export function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState("Todos")
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
+
+  // Close modal on ESC key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedProject(null)
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
+
   const { ref: titleRef, isVisible: titleVisible } =
     useScrollAnimation<HTMLDivElement>()
 
@@ -264,10 +293,10 @@ export function ProjectsSection() {
       ? [
         projects[0], // Aeropuerto - Consultoría
         projects[1], // Puentes - Construcciones
-        projects[4], // Hospital Coveñas - Consultoría
-        projects[5], // Vías Meta - Construcciones
-        projects[8], // SST Ecopetrol - Coaching
-        projects[7], // PMA Calle 97 - Consultoría
+        projects[5], // Hospital Coveñas - Consultoría (shifted from 4)
+        projects[6], // Vías Meta - Construcciones (shifted from 5)
+        projects[9], // SST Ecopetrol - Coaching (shifted from 8)
+        projects[8], // PMA Calle 97 - Consultoría (shifted from 7)
       ]
       : projects.filter((p) => p.category === activeFilter)
 
@@ -323,10 +352,108 @@ export function ProjectsSection() {
             : "sm:grid-cols-2 lg:grid-cols-2"
         )}>
           {filtered.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
+            <ProjectCard key={project.title} project={project} index={i} onClick={() => setSelectedProject(project)} />
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" style={{ zIndex: 9999 }}>
+          <div
+            className="absolute inset-0 bg-background/80 backdrop-blur-sm transition-opacity"
+            onClick={() => setSelectedProject(null)}
+          />
+
+          <div className="relative z-50 w-full max-w-3xl overflow-hidden rounded-2xl bg-card border border-border shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <div className="max-h-[85vh] overflow-y-auto">
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-background/80 hover:bg-background backdrop-blur-md text-foreground transition-all shadow-sm"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              {/* Modal Header Image */}
+              <div className={cn("relative w-full overflow-hidden", selectedProject.category === "Adecuaciones Arquitectónicas" || selectedProject.imageClassName ? "aspect-video bg-white" : "aspect-video")}>
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className={cn("h-full w-full", selectedProject.imageClassName ? selectedProject.imageClassName : (selectedProject.category === "Adecuaciones Arquitectónicas" ? "object-contain" : "object-cover"))}
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="rounded-full bg-primary/90 px-3 py-1 text-xs font-semibold text-primary-foreground backdrop-blur-sm shadow-md">
+                    {selectedProject.category}
+                  </span>
+                </div>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-6 sm:p-8">
+                <div className="flex items-center gap-1.5 text-muted-foreground mb-3 mt-2">
+                  <MapPin className="h-4 w-4" />
+                  <span className="text-sm font-medium">{selectedProject.location}</span>
+                </div>
+
+                <h2 className="text-2xl font-bold text-foreground sm:text-3xl mb-4 text-balance">
+                  {selectedProject.title}
+                </h2>
+
+                <p className="text-base leading-relaxed text-muted-foreground mb-8">
+                  {selectedProject.description}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-border">
+                  {/* Clients */}
+                  {selectedProject.clients && selectedProject.clients.length > 0 && (
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-4">
+                        Clientes / Aliados
+                      </p>
+                      <div className="flex flex-wrap gap-4">
+                        {selectedProject.clients.map((client) => (
+                          <div key={client.name} className="flex flex-col gap-2">
+                            <div className="h-16 w-32 bg-white rounded-lg p-3 flex items-center justify-center border border-border shadow-sm">
+                              <img
+                                src={client.logo}
+                                alt={client.name}
+                                className="max-h-full max-w-full object-contain"
+                              />
+                            </div>
+                            <span className="text-xs font-medium text-muted-foreground text-center line-clamp-2 max-w-[128px]">{client.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Stats / Highlights */}
+                  {selectedProject.stats && (
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-4">
+                        Dato Destacado
+                      </p>
+                      <div className="flex items-center gap-4 bg-secondary/30 rounded-xl p-5 border border-border/50">
+                        <div className="text-4xl font-black text-primary">
+                          {selectedProject.stats.value}
+                        </div>
+                        <div className="flex flex-col">
+                          <div className="text-xs font-semibold text-foreground uppercase tracking-wider">
+                            Impacto
+                          </div>
+                          <div className="text-xs text-muted-foreground">
+                            {selectedProject.stats.label}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
